@@ -1,18 +1,16 @@
-import { PrismaClient } from "@prisma/client";
+import "dotenv/config"
+import express from "express"
+import cors from "cors"
+import v1ProductRouter from './src/routes/v1/productRoutes.js'
 
-const prisma = new PrismaClient()
+const PORT = process.env.PORT || 3001
+const app = express()
 
-async function main() {
-    // ... you will write your Prisma Client queries here
-    
-}
+// Install Global Middlewares
+app.use(cors())
+app.use(express.json())
 
-main()
-  .then(async () => {
-    await prisma.$disconnect()
-  })
-  .catch(async (e) => {
-    console.error(e)
-    await prisma.$disconnect()
-    process.exit(1)
-  })
+// Register Routes
+app.use('/api/v1/productos', v1ProductRouter)
+
+app.listen(PORT, () => console.log(`Servidor corriendo en ${PORT}`))
