@@ -1,5 +1,5 @@
 import { Request, Response } from "express"
-import { getAllProductsService } from '../services/productService'
+import { getAllProductsService, getPricingHistoryByProductIdService } from '../services/productService.js'
 
 const getAllProducts = async (req: Request, res: Response) => {
     const allProducts = await getAllProductsService()
@@ -9,6 +9,21 @@ const getAllProducts = async (req: Request, res: Response) => {
     })
 }
 
+const getPricingHistoryByProductId = async (req: Request, res: Response) => {
+    let productId = Number(req.params.productId)
+    if (isNaN(productId) || typeof(productId) !== 'number') {
+        res.status(400)
+        res.send({ status: 'FAILED', message: 'productId is not a number.' })
+        return
+    }
+    const pricingHistory = await getPricingHistoryByProductIdService(productId)
+    res.send({
+        status: 'OK',
+        data: pricingHistory
+    })
+}
+
 export {
-    getAllProducts
+    getAllProducts,
+    getPricingHistoryByProductId
 }

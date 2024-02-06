@@ -11,6 +11,6 @@ app.use(cors())
 app.use(express.json())
 
 // Register Routes
-app.use('/api/v1/productos', v1ProductRouter)
+app.use('/api/v1/products', v1ProductRouter)
 
 app.listen(PORT, () => console.log(`Servidor corriendo en ${PORT}`))
