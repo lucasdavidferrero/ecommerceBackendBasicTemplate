@@ -6,9 +6,13 @@ const options: swaggerJsdoc.Options = {
     definition: {
         openapi: '3.0.0',
         info: {
-            title: 'API example',
+            title: 'Ecommerce API MC Hogar',
+            description: 'API ecommerce de MC Hogar',
             version: '1'
-        }
+        },
+        servers: [
+            { url: 'http://localhost:3001/api/v1/', descriprion: 'dev server for version 1.' }
+        ]
     },
     apis: ['./src/routes/v1/*.ts']
 }
@@ -28,3 +32,5 @@ function swaggerDocs (app: Express, port: number) {
 }
 
 export default swaggerDocs
+
+// https://www.youtube.com/watch?v=5aryMKiBEKY&ab_channel=TomDoesTech
