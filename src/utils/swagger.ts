@@ -1,8 +1,8 @@
 import { Express, Request, Response } from 'express'
-import swaggerJsdoc from 'swagger-jsdoc'
 import swaggerUi from 'swagger-ui-express'
+import openAPI from '../../openapi.json' assert { type: "json" }
 
-const options: swaggerJsdoc.Options = {
+/* const options: swaggerJsdoc.Options = {
     definition: {
         openapi: '3.0.0',
         info: {
@@ -15,19 +15,14 @@ const options: swaggerJsdoc.Options = {
         ]
     },
     apis: ['./src/routes/v1/*.ts']
-}
+}*/
 
-const swaggerSpec = swaggerJsdoc(options)
+// const swaggerSpec = swaggerJsdoc(options)
 
 function swaggerDocs (app: Express, port: number) {
     // Swagger page
-    app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec))
+    app.use('/docs', swaggerUi.serve, swaggerUi.setup(openAPI))
 
-    // Docs in JSON format
-    app.get('docs.json', (req: Request, res: Response) => {
-        res.setHeader('Content-Type', 'application/json')
-        res.send(swaggerSpec)
-    })
     console.log(`Docs available at http://localhost:${port}/docs`)
 }
 

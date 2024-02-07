@@ -1,0 +1,43 @@
+{
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "integer",
+            "description": "Hello World"
+        },
+        "name": {
+            "type": "string",
+            "description": "Product name"
+        },
+        "price": {
+            "type": "number"
+        },
+        "quantity": {
+            "type": "integer"
+        },
+        "SKU": {
+            "type": "string"
+        },
+        "description": {
+            "type": "string"
+        },
+        "observaciones": {
+            "type": "string"
+        },
+        "createdAt": {
+            "type": "string"
+        },
+        "modifiedAt": {
+            "type": "string"
+        },
+        "deletedAt": {
+            "type": "string"
+        },
+        "categoryId": {
+            "type": "string"
+        },
+        "brandId": {
+            "type": "string"
+        }
+    }
+  }

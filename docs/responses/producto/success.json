@@ -1,0 +1,20 @@
+{
+    "description": "Successful Product Response",
+    "content": {
+     "application/json": {
+        "schema": {
+          "type": "object",
+          "properties": {
+            "message": {
+              "type": "boolean",
+              "enum": [true],
+              "example": true
+            },
+            "data": {
+              "$ref": "../../schemas/producto.json"
+            }
+          }
+        }
+      }
+    }  
+  }
