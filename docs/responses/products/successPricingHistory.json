@@ -1,0 +1,20 @@
+{
+    "description": "Successful Pricing History by product ID Response",
+    "content": {
+     "application/json": {
+        "schema": {
+          "type": "object",
+          "properties": {
+            "status": {
+              "type": "string",
+              "enum": ["OK","FAILED"],
+              "example": "OK"
+            },
+            "data": {
+              "$ref": "../../schemas/products/pricingHistory.json"
+            }
+          }
+        }
+      }
+    }  
+  }

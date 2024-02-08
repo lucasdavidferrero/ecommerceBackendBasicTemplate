@@ -1,0 +1,23 @@
+{
+    "get": {
+        "summary": "Pricing history of the given product",
+        "tags": ["products"],
+        "parameters": [
+            {
+                "in": "path",
+                "name": "productId",
+                "required": true,
+                "schema": {
+                    "type": "integer",
+                    "minimum": 1
+                },
+                "description": "The product ID to find its history prices."
+            }
+        ],
+    "responses": {
+        "200": {
+          "$ref": "../../responses/products/successPricingHistory.json"
+        }
+      }
+    } 
+  }

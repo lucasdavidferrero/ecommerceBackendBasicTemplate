@@ -1,0 +1,11 @@
+{
+  "get": {
+    "summary": "Returns a list of users.",
+    "tags": ["products"],
+    "responses": {
+      "200": {
+        "$ref": "../../responses/products/success.json"
+      }
+    }
+  } 
+}

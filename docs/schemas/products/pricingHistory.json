@@ -1,0 +1,29 @@
+{
+    "type": "array",
+    "items": {
+        "type": "object",
+        "properties": {
+            "id": {
+                "type": "integer",
+                "description": "ID of pricing history single entity"
+            },
+            "price": {
+                "type": "string",
+                "description": "Price that between startedAt and endedAt"
+            },
+            "startedAt": {
+                "type": "string",
+                "description": "When the product price has changed or when product was first created price."
+            },
+            "endedAt": {
+                "type": "string",
+                "description": "Price was util this date. It could be null, meaning that is the current price.",
+                "nullable": true
+            },
+            "productId": {
+                "type": "integer",
+                "description": "ID of the product where this history price belongs to."
+            }
+        }
+    }
+}

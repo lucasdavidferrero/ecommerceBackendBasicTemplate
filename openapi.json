@@ -1,21 +1,29 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "title": "Sample API",
-    "description": "Optional multiline or single-line description in [CommonMark](http://commonmark.org/help/) or HTML.",
-    "version": "0.1.9"
+    "title": "Example Ecommerce API",
+    "description": "Here goes a nice description",
+    "version": "1.0.0"
   },
   "servers": [
     {
-      "url": "http://localhost.com:3001/api/v1/",
-      "description": "Optional server description, e.g. Main (production) server"
+      "url": "http://localhost:3001/api/v1/",
+      "description": "Local development server"
+    }
+  ],
+  "tags": [
+    {
+      "name": "products",
+      "description": "Everything about handling Products module"
     }
   ],
   "paths": {
-    "/productos": {
+    "/products": {
       "get": {
         "summary": "Returns a list of users.",
-        "description": "Optional extended description in CommonMark or HTML.",
+        "tags": [
+          "products"
+        ],
         "responses": {
           "200": {
             "description": "Successful Product Response",
@@ -24,12 +32,13 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "message": {
-                      "type": "boolean",
+                    "status": {
+                      "type": "string",
                       "enum": [
-                        true
+                        "OK",
+                        "FAILED"
                       ],
-                      "example": true
+                      "example": "OK"
                     },
                     "data": {
                       "type": "object",
@@ -71,6 +80,77 @@
                         },
                         "brandId": {
                           "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/products/pricing-history/{productId}": {
+      "get": {
+        "summary": "Pricing history of the given product",
+        "tags": [
+          "products"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "productId",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "description": "The product ID to find its history prices."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Pricing History by product ID Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "enum": [
+                        "OK",
+                        "FAILED"
+                      ],
+                      "example": "OK"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "integer",
+                            "description": "ID of pricing history single entity"
+                          },
+                          "price": {
+                            "type": "string",
+                            "description": "Price that between startedAt and endedAt"
+                          },
+                          "startedAt": {
+                            "type": "string",
+                            "description": "When the product price has changed or when product was first created price."
+                          },
+                          "endedAt": {
+                            "type": "string",
+                            "description": "Price was util this date. It could be null, meaning that is the current price.",
+                            "nullable": true
+                          },
+                          "productId": {
+                            "type": "integer",
+                            "description": "ID of the product where this history price belongs to."
+                          }
                         }
                       }
                     }

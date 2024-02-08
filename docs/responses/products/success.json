@@ -5,13 +5,13 @@
         "schema": {
           "type": "object",
           "properties": {
-            "message": {
-              "type": "boolean",
-              "enum": [true],
-              "example": true
+            "status": {
+              "type": "string",
+              "enum": ["OK","FAILED"],
+              "example": "OK"
             },
             "data": {
-              "$ref": "../../schemas/producto.json"
+              "$ref": "../../schemas/products/productComplete.json"
             }
           }
         }
